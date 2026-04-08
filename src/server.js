@@ -4,19 +4,19 @@ import authRoutes from "./routes/auth.js";
 
 const app = express();
 
-// CORS per il frontend locale
+// CORS PRIMA di tutto
 app.use(cors({
-  origin: ["http://localhost:5173"], // frontend locale
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // importante
+  origin: ["http://localhost:5173"],  // frontend locale
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
 app.use(express.json());
-
 app.use("/auth", authRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// risposta rapida per il preflight OPTIONS (opzionale ma sicura)
+app.options("*", cors());
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
