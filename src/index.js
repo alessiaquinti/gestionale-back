@@ -116,5 +116,6 @@ app.get("/test-protetto", authMiddleware, (req, res) => {
 
 // Avvio server
 app.listen(PORT, () => {
-  console.log(`Server avviato su http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
+
