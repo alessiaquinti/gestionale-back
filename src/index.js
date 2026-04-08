@@ -6,7 +6,8 @@ import authRoutes from "./routes/auth.js"; // percorso corretto del tuo auth.js
 
 const prisma = new PrismaClient();
 const app = express();
-const PORT = process.env.PORT || 3000; // usa la porta di Railway se presente
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server avviato su port ${PORT}`);
 });
