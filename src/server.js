@@ -4,15 +4,17 @@ import authRoutes from "./routes/auth.js";
 
 const app = express();
 
-// PERMETTI AL FRONTEND DI CHIAMARE IL BACKEND ONLINE
+// CORS per il frontend locale
 app.use(cors({
   origin: "http://localhost:5173", // il tuo frontend locale
-  credentials: true              // permette cookie/sessioni se serve
+  credentials: true
 }));
 
 app.use(express.json());
+
 app.use("/auth", authRoutes);
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
