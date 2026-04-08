@@ -6,7 +6,9 @@ const app = express();
 
 // CORS per il frontend locale
 app.use(cors({
-  origin: "http://localhost:5173", // il tuo frontend locale
+  origin: ["http://localhost:5173"], // frontend locale
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // importante
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
 
